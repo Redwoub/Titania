@@ -17,7 +17,7 @@ public class PlayerManager implements Listener {
 
         int i = 0;
 
-        if(p == Freeze.ta){
+        if(p == Freeze.target){
             if(Freeze.isFreeze == true){
                 i++;
                 p.teleport(p.getLocation());
