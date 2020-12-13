@@ -11,24 +11,27 @@ public class PlayerManager implements Listener {
 
     private Main main = Main.getInstance();
 
+    public int i = 0;
+
     @EventHandler
     public void onMoove(PlayerMoveEvent e){
         Player p = e.getPlayer();
-
-        int i = 0;
 
         if(p == Freeze.target){
             if(Freeze.isFreeze == true){
                 i++;
                 p.teleport(p.getLocation());
             }
-            if(i == 10){
+            if(i >= 15){
                 p.sendMessage("§cTu a étais freeze !\n §cSi tu te déconnect tu sera §c§lbanni §ca vie !");
                 i = 0;
             }
+
         }
 
     }
+
+
 
 
 }

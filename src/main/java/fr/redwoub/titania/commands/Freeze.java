@@ -36,6 +36,7 @@ public class Freeze implements CommandExecutor {
             target = Bukkit.getPlayer(t);
 
             isFreeze = true;
+            sender.sendMessage("§aTu a freeze : " + target.getName());
         }
 
         if(cmd.getName().equalsIgnoreCase("unfreeze")) {
@@ -45,7 +46,7 @@ public class Freeze implements CommandExecutor {
             }
 
             if (args.length == 0) {
-                sender.sendMessage("§cla commande est : /freeze <Pseudo du joueur>");
+                sender.sendMessage("§cla commande est : /unfreeze <Pseudo du joueur>");
                 return false;
             }
             String t = args[0];
@@ -56,6 +57,7 @@ public class Freeze implements CommandExecutor {
             target = Bukkit.getPlayer(t);
 
             isFreeze = false;
+            sender.sendMessage("§cTu a unfreeze : " + target.getName());
         }
         return false;
     }
