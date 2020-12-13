@@ -1,11 +1,7 @@
 package fr.redwoub.titania.database;
 
-
-import com.google.gson.internal.$Gson$Preconditions;
 import org.apache.commons.dbcp2.BasicDataSource;
-
 import java.sql.*;
-import java.util.concurrent.ExecutionException;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -20,7 +16,7 @@ public class MySQL {
         return connectionPool.getConnection();
     }
 
-    public void createTable(){
+    public void createTableTest(){
         update("CREATE TABLE IF NOT EXISTS breakblock (" +
                         "uuid VARCHAR(255), " +
                         "block BIGINT)");

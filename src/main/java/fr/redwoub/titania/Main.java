@@ -20,7 +20,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable(){
         instance = this;
-
+        initConnection();
         registerListener();
         registerCommand();
     }
@@ -55,8 +55,11 @@ public class Main extends JavaPlugin {
         connectionPool.setUsername("root");
         connectionPool.setPassword("");
         connectionPool.setUrl("jdbc:mysql://localhost:3306/titania?autoReconnect=true");
+        System.out.println("Connection etablie avec la bdd");
         connectionPool.setInitialSize(1);
         connectionPool.setMaxTotal(10);
+        mySQL = new MySQL(connectionPool);
+        mySQL.createTableTest();
     }
 
     public MySQL getmySQL(){
