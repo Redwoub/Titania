@@ -1,1 +1,7 @@
+fr\redwoub\titania\utils\ItemBuilder.class
+fr\redwoub\titania\commands\Invsee.class
+fr\redwoub\titania\database\MySQL.class
+fr\redwoub\titania\commands\Freeze.class
+fr\redwoub\titania\manager\PlayerManager.class
 fr\redwoub\titania\commands\Bc.class
+fr\redwoub\titania\Main.class

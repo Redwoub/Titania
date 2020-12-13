@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 public class Freeze implements CommandExecutor {
 
     public static boolean isFreeze = false;
+    public static Player ta;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -31,7 +32,8 @@ public class Freeze implements CommandExecutor {
                 sender.sendMessage("§cCe joueur n'est pas connecter ou n'existe pas");
                 return false;
             }
-            Player p = Bukkit.getPlayer(t);
+
+            ta = Bukkit.getPlayer(t);
 
             isFreeze = true;
         }
@@ -51,11 +53,11 @@ public class Freeze implements CommandExecutor {
                 sender.sendMessage("§cCe joueur n'est pas connecter ou n'existe pas");
                 return false;
             }
+            ta = Bukkit.getPlayer(t);
 
             isFreeze = false;
         }
         return false;
     }
-
 
 }
