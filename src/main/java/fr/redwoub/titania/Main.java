@@ -3,31 +3,24 @@ package fr.redwoub.titania;
 import fr.redwoub.titania.commands.Bc;
 import fr.redwoub.titania.commands.Freeze;
 import fr.redwoub.titania.commands.Invsee;
-import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.PlayerManager;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class Main extends JavaPlugin {
 
     private static Main instance;
-    private BasicDataSource connectionPool;
-    private MySQL mySQL;
+    public static ArrayList<UUID> isFreeze = new ArrayList<>();
 
 
     @Override
     public void onEnable(){
         instance = this;
-        initConnection();
         registerListener();
         registerCommand();
-    }
-
-    @Override
-    public void onDisable(){
-
     }
 
     public static Main getInstance() {
@@ -49,21 +42,6 @@ public class Main extends JavaPlugin {
         getCommand("unfreeze").setExecutor(new Freeze());
     }
 
-    private void initConnection(){
-        connectionPool = new BasicDataSource();
-        connectionPool.setDriverClassName("com.mysql.jdbc.Driver");
-        connectionPool.setUsername("root");
-        connectionPool.setPassword("");
-        connectionPool.setUrl("jdbc:mysql://localhost:3306/titania?autoReconnect=true");
-        System.out.println("Connection etablie avec la bdd");
-        connectionPool.setInitialSize(1);
-        connectionPool.setMaxTotal(10);
-        mySQL = new MySQL(connectionPool);
-        mySQL.createTableTest();
-    }
 
-    public MySQL getmySQL(){
-       return mySQL;
-    }
 
 }
