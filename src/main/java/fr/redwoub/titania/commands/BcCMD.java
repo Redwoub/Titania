@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class BcCMD implements CommandExecutor {
-
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player player;
