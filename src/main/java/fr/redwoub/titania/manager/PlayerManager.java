@@ -1,7 +1,6 @@
 package fr.redwoub.titania.manager;
 
-import fr.redwoub.titania.Main;
-import fr.redwoub.titania.tables.BlockBreak;
+import fr.redwoub.titania.utils.Freeze;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,22 +8,13 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class PlayerManager implements Listener {
 
-    private Main main = Main.getInstance();
-
-    public int i = 0;
-
     @EventHandler
-    public void onMoove(PlayerMoveEvent e){
-        Player p = e.getPlayer();
+    public void onMove(PlayerMoveEvent event){
+        Player player = event.getPlayer();
 
-        if(Main.isFreeze.contains(p.getUniqueId())){
-            p.teleport(p.getLocation());
-            i++;
-            if(i >= 20){
-                p.sendMessage("§cTu a étais freeze !\n §cSi tu te déconnect tu sera §c§lbanni §ca vie !");
-                i = 0;
-            }
+        if (Freeze.isFreeze(player) && event.getFrom().distance(event.getTo()) > 0) {
+            event.setCancelled(true);
+            player.sendMessage("§cTu a étais freeze !\n §cSi tu te déconnect tu sera §c§lbanni §ca vie !");
         }
-
     }
 }
