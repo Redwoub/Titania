@@ -31,6 +31,7 @@ public enum RankUnit {
         return Arrays.stream(values()).filter(r -> r.getPower() == power).findAny().orElse(RankUnit.JOUEUR);
     }
 
+
     public String getName() {
         return name;
     }

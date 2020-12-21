@@ -38,4 +38,17 @@ public class Accouts {
         Main.getInstance().getAccouts().remove(this);
     }
 
+    public long getCoins(){
+        return (long) Main.getInstance().getMySQL().query("SELECT * FROM " + TABLE + " WHERE uuid='" + uuid + "'", resultSet -> {
+            try {
+                if(resultSet.next()){
+                    return resultSet.getLong("coins");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return 0;
+        });
+    }
+
 }

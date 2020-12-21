@@ -4,6 +4,7 @@ import fr.redwoub.titania.Main;
 
 import java.sql.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class MySQL {
     private Connection connection;
@@ -55,23 +56,32 @@ public class MySQL {
     }
 
     public void createTables(){
-        update("CREATE TABLES IF NOT EXISTS player_info (" +
+        update("CREATE TABLE IF NOT EXISTS player_info (" +
                 "uuid VARCHAR(255), " +
                 "grade VARCHAR(255) ," +
                 "coins BIGINT)");
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     public void query(String qry, Consumer<ResultSet> consumer){
-        try (Connection c = getConnection();
-             PreparedStatement s = c.prepareStatement(qry);
-             ResultSet rs = s.executeQuery()) {
+        try (PreparedStatement sts = connection.prepareStatement(qry);
+             ResultSet rs = sts.executeQuery()) {
             consumer.accept(rs);
         } catch(SQLException e){
             throw new IllegalStateException(e.getMessage());
         }
     }
 
-    public Connection getConnection() {
-        return connection;
+    public Object query(String qry, Function<ResultSet, Object> consumer){
+        try (PreparedStatement sts = connection.prepareStatement(qry);
+             ResultSet rs = sts.executeQuery()) {
+            return consumer.apply(rs);
+        } catch(Exception e){
+            throw new IllegalStateException(e.getMessage());
+        }
     }
+
 }

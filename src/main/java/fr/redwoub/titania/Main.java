@@ -3,6 +3,7 @@ package fr.redwoub.titania;
 import fr.redwoub.titania.commands.BcCMD;
 import fr.redwoub.titania.commands.FreezeCMD;
 import fr.redwoub.titania.commands.InvseeCMD;
+import fr.redwoub.titania.commands.MoneyCMD;
 import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.PlayerManager;
 import fr.redwoub.titania.rank.Accouts;
@@ -31,6 +32,7 @@ public class Main extends JavaPlugin {
         getCommand("invsee").setExecutor(new InvseeCMD());
         getCommand("freeze").setExecutor(new FreezeCMD());
         getCommand("unfreeze").setExecutor(new FreezeCMD());
+        getCommand("money").setExecutor(new MoneyCMD());
     }
 
     @Override
