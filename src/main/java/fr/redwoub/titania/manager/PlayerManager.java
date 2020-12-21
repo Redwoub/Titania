@@ -27,6 +27,6 @@ public class PlayerManager implements Listener {
         Player player = e.getPlayer();
         Accouts accouts = new Accouts(player);
         accouts.setup();
-
+        accouts.addCoins(10);
     }
 }

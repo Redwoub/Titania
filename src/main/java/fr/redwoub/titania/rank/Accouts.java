@@ -51,4 +51,16 @@ public class Accouts {
         });
     }
 
+    public void setCoins(long coins){
+        Main.getInstance().getMySQL().update("UPDATE " +  TABLE + " SET coins='" + coins + "' WHERE uuid='" + uuid + "'");
+    }
+
+    public void addCoins(long coins){
+        setCoins(getCoins() + coins);
+    }
+
+    public void removeCoins(long coins){
+        setCoins(getCoins() < coins ? 0 : getCoins() - coins);
+    }
+
 }
