@@ -1,9 +1,6 @@
 package fr.redwoub.titania;
 
-import fr.redwoub.titania.commands.BcCMD;
-import fr.redwoub.titania.commands.FreezeCMD;
-import fr.redwoub.titania.commands.InvseeCMD;
-import fr.redwoub.titania.commands.MoneyCMD;
+import fr.redwoub.titania.commands.*;
 import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.PlayerManager;
 import fr.redwoub.titania.rank.Accouts;
@@ -19,6 +16,7 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
     private MySQL mySQL = new MySQL();
+    public MenuCMD menuCMD = new MenuCMD();
 
     private List<Accouts> accouts;
 
@@ -33,6 +31,8 @@ public class Main extends JavaPlugin {
         getCommand("freeze").setExecutor(new FreezeCMD());
         getCommand("unfreeze").setExecutor(new FreezeCMD());
         getCommand("money").setExecutor(new MoneyCMD());
+        getCommand("menu").setExecutor(new MenuCMD());
+        getCommand("list").setExecutor(new ListCMD());
     }
 
     @Override
@@ -66,4 +66,6 @@ public class Main extends JavaPlugin {
     public Accouts getAccouts(Player player){
         return getAccouts().stream().filter(a -> a.getPlayer() == player).findFirst().get();
     }
+
+
 }

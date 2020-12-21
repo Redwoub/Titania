@@ -16,3 +16,5 @@ commands:
     permission: titania.unfreeze
     permission-message: §cVous n'avez pas la permission d'executer cette commande
   money:
+  menu:
+  list:
