@@ -4,6 +4,7 @@ import fr.redwoub.titania.commands.BcCMD;
 import fr.redwoub.titania.commands.FreezeCMD;
 import fr.redwoub.titania.commands.InvseeCMD;
 import fr.redwoub.titania.database.MySQL;
+import fr.redwoub.titania.database.Tables;
 import fr.redwoub.titania.manager.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -13,6 +14,7 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
     public MySQL mySQL = new MySQL();
+    private Tables tables = new Tables();
 
     private void registerListener(){
         PluginManager pm = Bukkit.getPluginManager();
@@ -32,6 +34,7 @@ public class Main extends JavaPlugin {
         registerListener();
         registerCommand();
         mySQL.connected("localhost", 3306, "titania", "root", "");
+        tables.createTables();
 
     }
 
