@@ -2,9 +2,8 @@ package fr.redwoub.titania.database;
 
 import fr.redwoub.titania.Main;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.function.Consumer;
 
 public class MySQL {
     private Connection connection;
@@ -24,6 +23,7 @@ public class MySQL {
     public void disconnect(){
         if(isConnected()){
             try {
+                Main.getInstance().getServer().getConsoleSender().sendMessage("§6[Titania] §cDeconnection avec la bdd...");
                 connection.close();
 
             } catch (SQLException e) {
@@ -45,6 +45,31 @@ public class MySQL {
         return false;
     }
 
+    public void update (String qry){
+        try {
+            PreparedStatement sts = connection.prepareStatement(qry);
+            sts.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createTables(){
+        update("CREATE TABLES IF NOT EXISTS player_info (" +
+                "uuid VARCHAR(255), " +
+                "grade VARCHAR(255) ," +
+                "coins BIGINT)");
+    }
+
+    public void query(String qry, Consumer<ResultSet> consumer){
+        try (Connection c = getConnection();
+             PreparedStatement s = c.prepareStatement(qry);
+             ResultSet rs = s.executeQuery()) {
+            consumer.accept(rs);
+        } catch(SQLException e){
+            throw new IllegalStateException(e.getMessage());
+        }
+    }
 
     public Connection getConnection() {
         return connection;
