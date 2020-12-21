@@ -4,17 +4,22 @@ import fr.redwoub.titania.commands.BcCMD;
 import fr.redwoub.titania.commands.FreezeCMD;
 import fr.redwoub.titania.commands.InvseeCMD;
 import fr.redwoub.titania.database.MySQL;
-import fr.redwoub.titania.database.Tables;
 import fr.redwoub.titania.manager.PlayerManager;
+import fr.redwoub.titania.rank.Accouts;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends JavaPlugin {
 
     private static Main instance;
-    public MySQL mySQL = new MySQL();
-    private Tables tables = new Tables();
+    private MySQL mySQL = new MySQL();
+
+    private List<Accouts> accouts;
 
     private void registerListener(){
         PluginManager pm = Bukkit.getPluginManager();
@@ -34,7 +39,8 @@ public class Main extends JavaPlugin {
         registerListener();
         registerCommand();
         mySQL.connected("localhost", 3306, "titania", "root", "");
-        tables.createTables();
+        mySQL.createTables();
+        accouts = new ArrayList<>();
 
     }
 
@@ -45,5 +51,17 @@ public class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return instance;
+    }
+
+    public MySQL getMySQL() {
+        return mySQL;
+    }
+
+    public List<Accouts> getAccouts() {
+        return accouts;
+    }
+
+    public Accouts getAccouts(Player player){
+        return getAccouts().stream().filter(a -> a.getPlayer() == player).findFirst().get();
     }
 }
