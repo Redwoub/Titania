@@ -3,6 +3,7 @@ package fr.redwoub.titania;
 import fr.redwoub.titania.commands.*;
 import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.PlayerManager;
+import fr.redwoub.titania.manager.Register;
 import fr.redwoub.titania.rank.Accouts;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,28 +21,10 @@ public class Main extends JavaPlugin {
 
     private List<Accouts> accouts;
 
-    private void registerListener(){
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new PlayerManager(), this);
-        pm.registerEvents(new MenuCMD(), this);
-    }
-
-    private void registerCommand(){
-        getCommand("bc").setExecutor(new BcCMD());
-        getCommand("invsee").setExecutor(new InvseeCMD());
-        getCommand("freeze").setExecutor(new FreezeCMD());
-        getCommand("unfreeze").setExecutor(new FreezeCMD());
-        getCommand("money").setExecutor(new MoneyCMD());
-        getCommand("menu").setExecutor(new MenuCMD());
-        getCommand("list").setExecutor(new ListCMD());
-        getCommand("feed").setExecutor(new FeedCMD());
-    }
-
     @Override
     public void onEnable(){
         instance = this;
-        registerListener();
-        registerCommand();
+        new Register().onRegister();
         mySQL.connected("localhost", 3306, "titania", "root", "");
         mySQL.createTables();
         accouts = new ArrayList<>();
