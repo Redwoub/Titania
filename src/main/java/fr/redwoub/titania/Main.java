@@ -23,6 +23,7 @@ public class Main extends JavaPlugin {
     private void registerListener(){
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerManager(), this);
+        pm.registerEvents(new MenuCMD(), this);
     }
 
     private void registerCommand(){
@@ -33,6 +34,7 @@ public class Main extends JavaPlugin {
         getCommand("money").setExecutor(new MoneyCMD());
         getCommand("menu").setExecutor(new MenuCMD());
         getCommand("list").setExecutor(new ListCMD());
+        getCommand("feed").setExecutor(new FeedCMD());
     }
 
     @Override
