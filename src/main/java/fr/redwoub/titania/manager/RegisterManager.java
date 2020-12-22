@@ -5,7 +5,7 @@ import fr.redwoub.titania.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
-public class Register {
+public class RegisterManager {
     private Main main = Main.getInstance();
     public void onRegister(){
         PluginManager pm = Bukkit.getPluginManager();
@@ -20,6 +20,7 @@ public class Register {
         main.getCommand("menu").setExecutor(new MenuCMD());
         main.getCommand("list").setExecutor(new ListCMD());
         main.getCommand("feed").setExecutor(new FeedCMD());
+        main.getCommand("setrank").setExecutor(new SetRankCMD());
     }
 
 

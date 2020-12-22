@@ -34,6 +34,10 @@ public class Accouts {
         });
     }
 
+    public void setRank(RankUnit rankUnit){
+        Main.getInstance().getMySQL().update("UPDATE " +  TABLE + " SET grade='" + rankUnit + "' WHERE uuid='" + uuid + "'");
+    }
+
     public void delete(){
         Main.getInstance().getAccouts().remove(this);
     }

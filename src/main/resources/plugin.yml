@@ -19,3 +19,6 @@ commands:
   menu:
   list:
   feed:
+  setrank:
+    permission: titania.setrank
+    permission-message: §cVous n'avez pas la permission d'executer cette commande
