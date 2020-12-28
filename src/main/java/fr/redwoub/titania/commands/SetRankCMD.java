@@ -33,6 +33,7 @@ public class SetRankCMD implements CommandExecutor {
         Accouts accouts = new Accouts(target);
 
         RankUnit rank = RankUnit.valueOf(args[1].toUpperCase());
+
         accouts.setRank(rank);
         player.sendMessage("§aVous avez bien changer le rank de " + target.getName() + " en : §e " + rank);
         return false;

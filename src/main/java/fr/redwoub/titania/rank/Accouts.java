@@ -34,6 +34,23 @@ public class Accouts {
         });
     }
 
+    public static Accouts getAccount(Player player){
+        return Main.getInstance().getAccouts().stream().filter(a -> a.getPlayer() == player).findFirst().get();
+    }
+
+    public RankUnit getRank(){
+        return (RankUnit) Main.getInstance().getMySQL().query("SELECT * FROM " + TABLE + " WHERE uuid='" + uuid + "'", rs -> {
+            try {
+                if(rs.next()){
+                    return RankUnit.getByName(rs.getString("grade"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return RankUnit.JOUEUR;
+        });
+    }
+
     public void setRank(RankUnit rankUnit){
         Main.getInstance().getMySQL().update("UPDATE " +  TABLE + " SET grade='" + rankUnit + "' WHERE uuid='" + uuid + "'");
     }

@@ -30,7 +30,7 @@ public class MenuCMD implements CommandExecutor, Listener {
 
         inv = Bukkit.createInventory(null, 54, "§6Menu");
         inv.setItem(53, new ItemBuilder(Material.BARRIER).setName("§cClose Menu").setLore("§7Left click to close this menu.").toItemStack());
-        inv.setItem(0, new ItemBuilder(Material.IRON_INGOT).setName("§6Add 10$").toItemStack());
+        inv.setItem(0, new ItemBuilder(Material.IRON_INGOT).setName("§6Buy one Iron Ingot").setLore("§aPrice §f: §a5$.").toItemStack());
 
         player.openInventory(inv);
         return false;
@@ -44,9 +44,9 @@ public class MenuCMD implements CommandExecutor, Listener {
 
         switch (current.getType()){
             case IRON_INGOT:
-                if(current.getItemMeta().getDisplayName().equalsIgnoreCase("§6Add 10$")){
-                    accouts.addCoins(10);
-                    player.sendMessage("§aVotre compte a était créditer de 10$\n" + "§aFaite §e/money §apour votre nouveau solde");
+                if(current.getItemMeta().getDisplayName().equalsIgnoreCase("§6Buy one Iron Ingot")){
+                    player.getInventory().addItem(new ItemStack(Material.IRON_INGOT));
+                    accouts.removeCoins(5);
                     e.setCancelled(true);
                 }
                 break;

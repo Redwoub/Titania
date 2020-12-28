@@ -5,13 +5,13 @@ import java.util.Arrays;
 public enum RankUnit {
 
     JOUEUR("Joueur", 0, "§7"),
-    VIP("VIP", 0, "§5[§eVIP§6] "),
-    MVP("MVP", 0, "§6[§bMVP§6]"),
-    MODERATEUR("MODERATEUR", 0, "§aMod"),
-    RESPONSABLE("RESPONSABLE", 0, "§cResp"),
-    DEVELOPPER("DEVELOPPER", 0, "§6Dev"),
-    ADMINISTRATEUR("ADMINISTRATEUR", 0, "§4Admin"),
-    FONDATEUR("Fondateur", 0 , "§4Fondateur");
+    VIP("VIP", 0, "§5[§eVIP§5] "),
+    MVP("MVP", 0, "§6[§bMVP§6] "),
+    MODERATEUR("MODERATEUR", 0, "§aMod "),
+    RESPONSABLE("RESPONSABLE", 0, "§cResp "),
+    DEVELOPPER("DEVELOPPER", 0, "§6Dev "),
+    ADMINISTRATEUR("ADMINISTRATEUR", 0, "§4Admin "),
+    FONDATEUR("Fondateur", 0 , "§4Fondateur ");
 
     private String name;
     private int power;
