@@ -3,14 +3,14 @@ package fr.redwoub.titania.manager;
 import fr.redwoub.titania.rank.Accouts;
 import fr.redwoub.titania.rank.RankUnit;
 import fr.redwoub.titania.utils.Freeze;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.*;
+import org.bukkit.inventory.ItemStack;
 
 public class PlayerManager implements Listener {
 
@@ -24,13 +24,6 @@ public class PlayerManager implements Listener {
         }
     }
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent e){
-        Player player = e.getPlayer();
-        Accouts accouts = new Accouts(player);
-        accouts.setup();
-        accouts.addCoins(10);
-    }
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
@@ -39,4 +32,5 @@ public class PlayerManager implements Listener {
 
         e.setFormat(rankUnit.getPrefix() + "%1$s §7> " + (rankUnit == RankUnit.JOUEUR ? "§7" : "§f") + "%2$s");
     }
+
 }

@@ -11,6 +11,7 @@ public class RegisterManager {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerManager(), Main.getInstance());
         pm.registerEvents(new MenuCMD(), Main.getInstance());
+        pm.registerEvents(new PlayerJoin(), Main.getInstance());
 
         main.getCommand("bc").setExecutor(new BcCMD());
         main.getCommand("invsee").setExecutor(new InvseeCMD());
@@ -21,6 +22,7 @@ public class RegisterManager {
         main.getCommand("list").setExecutor(new ListCMD());
         main.getCommand("feed").setExecutor(new FeedCMD());
         main.getCommand("setrank").setExecutor(new SetRankCMD());
+        main.getCommand("gm").setExecutor(new GmCMD());
     }
 
 

@@ -22,3 +22,6 @@ commands:
   setrank:
     permission: titania.setrank
     permission-message: §cVous n'avez pas la permission d'executer cette commande
+  gm:
+    permission: titania.gm
+    permission-message: §cVous n'avez pas la permission d'executer cette commande

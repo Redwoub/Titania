@@ -1,17 +1,19 @@
 package fr.redwoub.titania.rank;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public enum RankUnit {
 
-    JOUEUR("Joueur", 0, "§7"),
-    VIP("VIP", 0, "§5[§eVIP§5] "),
-    MVP("MVP", 0, "§6[§bMVP§6] "),
-    MODERATEUR("MODERATEUR", 0, "§aMod "),
-    RESPONSABLE("RESPONSABLE", 0, "§cResp "),
-    DEVELOPPER("DEVELOPPER", 0, "§6Dev "),
-    ADMINISTRATEUR("ADMINISTRATEUR", 0, "§4Admin "),
+    JOUEUR("Joueur", 7, "§7"),
+    VIP("VIP", 6, "§5[§eVIP§5] "),
+    MVP("MVP", 5, "§6[§bMVP§6] "),
+    MODERATEUR("MODERATEUR", 4, "§aMod "),
+    RESPONSABLE("RESPONSABLE", 3, "§cResp "),
+    DEVELOPPER("DEVELOPPER", 2, "§1Dev "),
+    ADMINISTRATEUR("ADMINISTRATEUR", 1, "§4Admin "),
     FONDATEUR("Fondateur", 0 , "§4Fondateur ");
+
 
     private String name;
     private int power;

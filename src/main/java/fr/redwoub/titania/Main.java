@@ -1,12 +1,15 @@
 package fr.redwoub.titania;
 
-import fr.redwoub.titania.commands.*;
 import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.RegisterManager;
 import fr.redwoub.titania.rank.Accouts;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,6 @@ public class Main extends JavaPlugin {
 
     private static Main instance;
     private MySQL mySQL = new MySQL();
-    public MenuCMD menuCMD = new MenuCMD();
 
     private List<Accouts> accouts;
 
@@ -49,5 +51,23 @@ public class Main extends JavaPlugin {
         return getAccouts().stream().filter(a -> a.getPlayer() == player).findFirst().get();
     }
 
+    public void createFile(String fileName){
+        if(!getDataFolder().exists()){
+            getDataFolder().mkdir();
+        }
 
+        File file = new File(getDataFolder(), fileName + ".yml");
+
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public File getFile(String fileName){
+        return new File(getDataFolder(), fileName + ".yml");
+    }
 }
