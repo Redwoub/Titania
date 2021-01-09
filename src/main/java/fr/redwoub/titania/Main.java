@@ -27,7 +27,6 @@ public class Main extends JavaPlugin {
         mySQL.connected("localhost", 3306, "titania", "root", "");
         mySQL.createTables();
         accouts = new ArrayList<>();
-
     }
 
     @Override
@@ -51,23 +50,4 @@ public class Main extends JavaPlugin {
         return getAccouts().stream().filter(a -> a.getPlayer() == player).findFirst().get();
     }
 
-    public void createFile(String fileName){
-        if(!getDataFolder().exists()){
-            getDataFolder().mkdir();
-        }
-
-        File file = new File(getDataFolder(), fileName + ".yml");
-
-        if(!file.exists()){
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public File getFile(String fileName){
-        return new File(getDataFolder(), fileName + ".yml");
-    }
 }
