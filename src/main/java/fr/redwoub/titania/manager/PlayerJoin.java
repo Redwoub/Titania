@@ -1,6 +1,6 @@
 package fr.redwoub.titania.manager;
 
-import fr.redwoub.titania.Main;
+
 import fr.redwoub.titania.rank.Accouts;
 import fr.redwoub.titania.rank.RankUnit;
 import org.bukkit.ChatColor;

@@ -3,13 +3,8 @@ package fr.redwoub.titania;
 import fr.redwoub.titania.database.MySQL;
 import fr.redwoub.titania.manager.RegisterManager;
 import fr.redwoub.titania.rank.Accouts;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +22,7 @@ public class Main extends JavaPlugin {
         mySQL.connected("localhost", 3306, "titania", "root", "");
         mySQL.createTables();
         accouts = new ArrayList<>();
+
     }
 
     @Override
